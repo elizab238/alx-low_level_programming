@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
+#include <stdio.h>
 /*
  * main - source code
  * Description: Returns a positive a negative and zero
