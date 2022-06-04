@@ -6,6 +6,7 @@
 /**
  * main - if else conditiom
  * Description: the string should return last digits
+ * Return: 0
  */
 int main(void)
 {
