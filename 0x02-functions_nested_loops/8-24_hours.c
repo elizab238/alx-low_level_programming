@@ -26,12 +26,12 @@ void jack_bauer(void)
 			minutes_ones = '0';
 			while (minutes_ones < 58)
 			{
-				putchar(hours_tens);
-				putchar(hours_ones);
-				putchar(':');
-				putchar(minutes_tens);
-				putchar(minutes_ones);
-				putchar('\n');
+				_putchar(hours_tens);
+				_putchar(hours_ones);
+				_putchar(':');
+				_putchar(minutes_tens);
+				_putchar(minutes_ones);
+				_putchar('\n');
 				minutes_ones++;
 			}
 			minutes_ones = '0';
