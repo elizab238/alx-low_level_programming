@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * main - nested loops
- * Description: print _putchar folllowed by a new line
+ * main - print _putchar
+ * Description: print _putchar
  * Return value: 0 (success)
  */
 int main(void)
