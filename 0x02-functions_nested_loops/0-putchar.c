@@ -3,11 +3,11 @@
 /**
  * main - nested loops
  * Description: print _putchar folllowed by a new line
- * Return value: 0
+ * Return value: 0 (success)
  */
 int main(void)
 {
-	char text[9] = " _putchar";
+	char text[9] = "_putchar";
 	int i = 0;
 
 	for (i = 0; i < 8; i++)
@@ -15,6 +15,5 @@ int main(void)
 		_putchar(text[i]);
 	}
 	_putchar('\n');
-	return (0);
-
+return (0);
 }
