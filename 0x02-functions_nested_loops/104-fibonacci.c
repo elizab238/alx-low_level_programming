@@ -2,16 +2,8 @@
 /**
  * main - prints the first 98 fibonacci numbers
  * Description: start with one and two followed by a new line
- * Result: 0
+ * Return: 0
  */
-
-
-
-
-
-
-
-
 int main(void)
 {
 	unsigned long int i, j, k, j1, j2, k1, k2;
