@@ -6,7 +6,7 @@
  * @b: pointer 2
  * REturn void
  */
-void swap_int(int *a, int *b);
+void swap_int(int *a, int *b)
 {
 	int c = *a;
 	*a = *b;
