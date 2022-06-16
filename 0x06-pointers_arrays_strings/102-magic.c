@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/**
+ * main -  prints a[2] = 98
+ * description: you are not allowed to use the variable a or p
+ * Return: 0
+ */
+
 int main(void)
 {
 	int n;
