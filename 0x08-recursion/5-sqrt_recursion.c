@@ -4,11 +4,11 @@
  * @n: int n
  * Return: int
  */
- 
- int _sqrt_recursion(int n)
- {
- 	return (_sqrt(n, 1));
- }
+
+int _sqrt_recursion(int n)
+{
+	return (_sqrt(n, 1));
+}
 
 /**
  * _sqrt - _sqrt_recursion
