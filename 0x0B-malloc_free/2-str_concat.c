@@ -3,9 +3,9 @@
 
 /**
  * str_concat - concatenates two strings
- * @s1: destination string
- * @s2: string to append to s1
- *Return: pointer of an array of character
+ * @s1: first string
+ * @s2: second string
+ * Return: pointer of an array of character
  */
 
 char *str_concat(char *s1, char *s2)	
@@ -20,8 +20,10 @@ char *str_concat(char *s1, char *s2)
 
 	for (i = 0; s1[i] != '\0'; i++)
 		;
+
 	for (j = 0; s2[j] != '\0'; j++)
 		;
+
 	strout = malloc(sizeof(char) * (i + j + 1));
 
 	if (strout == NULL)
@@ -31,8 +33,7 @@ char *str_concat(char *s1, char *s2)
 	}
 
 	for (k = 0; k < i; k++)
-s		strout[k] = s1[k];
-
+		strout[k] = s1[k];
 	limit = j;
 	for (j = 0; j <= limit; k++, j++)
 		strout[k] = s2[j];
