@@ -1,52 +1,80 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_set - creates the nodes for the hash table
- * @ht: hash table
- * @key: the key
- * @value: the value
- * Return: bool
-*/
-int hash_table_set(hash_table_t *ht, const char *key, const char *value)
+ * check_key - checks key
+ *
+ * @current: current node
+ * @key: key
+ * @value: new value of the key
+ *
+ * Description: check for key in the hash table
+ *
+ * Return: 1 if present, 0 otherwise
+ */
+int check_key(hash_node_t *current, char *key, char *value)
 {
-	unsigned long int idx = 0;
-	hash_node_t *new_table = NULL, *aux_key = NULL;
-
-	if (ht == NULL || key == NULL || strcmp(key, "") == 0)
-		return (0);
-	idx = key_index((const unsigned char *) key, ht->size);
-	aux_key = ht->array[idx];
-
-	while (aux_key != NULL)
+	while (current != NULL)
 	{
-		if (strcmp(key, aux_key->key) == 0)
+		if (strcmp(current->key, key) == 0)
 		{
-			free(aux_key->value);
-			aux_key->value = strdup(value);
+			free(current->value);
+			current->value = value;
 			return (1);
 		}
-		aux_key = aux_key->next;
+		current = current->next;
 	}
-	new_table = malloc(sizeof(hash_node_t));
-	if (new_table == NULL)
+	return (0);
+}
+
+/**
+ * hash_table_set -  set a hashtable key and value
+ *
+ * @ht: hash table
+ * @key: hash table key
+ * @value: value of the new elements
+ *
+ * Description: adds an element to the hash table
+ *
+ * Return: 1 if success, 0 otherwise
+ */
+int hash_table_set(hash_table_t *ht, const char *key, const char *value)
+{
+	unsigned long int index;
+	char *value_copy;
+	char *key_copy;
+	hash_node_t *new_node;
+
+	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
-	new_table->key = strdup(key);
-	if (new_table->key == NULL)
+
+	value_copy = strdup(value);
+	if (value_copy == NULL)
+		return (0);
+
+	key_copy = strdup(key);
+	if (key_copy == NULL)
+		return (0);
+
+	index = key_index((unsigned char *)key, ht->size);
+
+	if (check_key(ht->array[index], key_copy, value_copy) == 1)
+		return (1);
+
+	new_node = malloc(sizeof(hash_node_t));
+	if (!new_node)
 	{
-		free(new_table);
+		free(new_node);
 		return (0);
 	}
-	new_table->value = strdup(value);
-	if (new_table->value == NULL)
-	{
-		free(new_table->key);
-		free(new_table);
-		return (0);
-	}
-	new_table->next = NULL;
-	if (ht->array[idx] != NULL)
-		new_table->next = ht->array[idx];
-	ht->array[idx] = new_table;
+
+	new_node->key = key_copy;
+	new_node->value = value_copy;
+	if (ht->array[index] != NULL)
+		new_node->next = ht->array[index];
+	else
+		new_node->next = NULL;
+
+	ht->array[index] = new_node;
 
 	return (1);
 }
